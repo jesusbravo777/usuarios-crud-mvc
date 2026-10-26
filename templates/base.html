@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Usuarios CRUD{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+<body>
+  <header><div class="contenedor barra"><a class="marca" href="{{ url_for('usuarios.inicio') }}">Usuarios CRUD <span>MVC</span></a><span>Flask + SQLite</span></div></header>
+  <main class="contenedor">
+    {% with mensajes = get_flashed_messages(with_categories=true) %}
+      {% for categoria, mensaje in mensajes %}<div class="alerta {{ categoria }}">{{ mensaje }}</div>{% endfor %}
+    {% endwith %}
+    {% block contenido %}{% endblock %}
+  </main>
+  <footer class="contenedor">Actividad Core · CRUD de usuarios con arquitectura MVC</footer>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}{{ titulo }}{% endblock %}
+{% block contenido %}
+<a class="volver" href="{{ url_for('usuarios.inicio') }}">← Volver al listado</a>
+<section class="tarjeta formulario"><h1>{{ titulo }}</h1><p>Completa los datos del usuario.</p>
+<form method="post">
+<label for="nombre">Nombre completo</label><input id="nombre" name="nombre" maxlength="100" required value="{{ request.form.get('nombre', usuario.nombre if usuario else '') }}" placeholder="Ej.: Ana Pérez">
+<label for="correo">Correo electrónico</label><input id="correo" type="email" name="correo" maxlength="150" required value="{{ request.form.get('correo', usuario.correo if usuario else '') }}" placeholder="Ej.: ana@correo.com">
+<label for="edad">Edad</label><input id="edad" type="number" name="edad" min="1" max="120" required value="{{ request.form.get('edad', usuario.edad if usuario else '') }}" placeholder="Ej.: 20">
+<div class="botones"><button class="boton" type="submit">Guardar usuario</button><a class="boton secundario" href="{{ url_for('usuarios.inicio') }}">Cancelar</a></div>
+</form></section>
+{% endblock %}
